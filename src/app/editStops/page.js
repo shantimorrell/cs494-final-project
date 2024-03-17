@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "../page.module.css";
+import { FavoriteStopsContext } from "../context";
 
 export default function EditStops() {
     return(
@@ -15,7 +16,7 @@ export default function EditStops() {
 export function Stops() {
     const [stops, setStops] = useState([])
     const [id, setID] = useState([])
-    const [favorite, setFavorite] = useState([])
+    let { favorite, setFavorite } = useContext(FavoriteStopsContext)
     const [search, setSearch] = useState("")
 
     useEffect(() => {

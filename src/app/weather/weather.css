@@ -1,0 +1,132 @@
+/*styles for weather page background*/
+.weather-background {
+  background: linear-gradient(to bottom, #e3e6e9, #b0b6bc);
+  min-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-title {
+  font-size: 40px;
+  color: #5f6f52;
+  font-weight: 500;
+}
+
+/*styles for 3 weather widgets layout*/
+.weather-info-boxes-container {
+  max-width: 1100px;
+  height: 400px;
+  display: flex;
+  gap: 40px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-info-box {
+  width: 300px;
+  height: 280px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*styles for temperature/humidity widget*/
+.temp-humidity-box {
+  width: 300px;
+  height: 280px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.weather-temp {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.weather-temp-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.weather-temp-text {
+  font-size: 60px;
+  font-weight: 500;
+  color: rgb(85, 84, 84);
+}
+
+.weather-humidity-text {
+  font-size: 20px;
+  color: rgb(85, 84, 84);
+}
+
+/*styles for weather description / visibility widget*/
+.weather-description-box {
+  width: 300px;
+  height: 280px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.weather-description {
+  font-size: 40px;
+  color: rgb(85, 84, 84);
+}
+
+.visibility-box {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.visibility-icon {
+  height: 30px;
+  width: 30px;
+}
+
+.weather-visibility {
+  font-size: 20px;
+  color: rgb(85, 84, 84);
+}
+
+/*styles for wind speed widget*/
+.weather-wind-box {
+  width: 300px;
+  height: 280px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.wind-icon {
+  width: 60px;
+  height: 60px;
+  color: lightskyblue;
+}
+
+.wind-text {
+  font-size: 60px;
+  font-weight: 500;
+  color: rgb(85, 84, 84);
+}

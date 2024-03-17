@@ -1,10 +1,13 @@
 .main {
+  background-image: url("/corvallis-bus.jpg");
+  background-position: bottom;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-  min-height: 100vh;
+  height: calc(100vh - 150px);
 }
 
 .description {

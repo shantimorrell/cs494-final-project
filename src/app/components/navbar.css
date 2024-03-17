@@ -1,0 +1,52 @@
+/*styles for header with title*/
+.sitetitlebox {
+  background-color: #5f6f52;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.sitetitle {
+  color: white;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+/*styles for navbar*/
+.navbar {
+  background-color: #a9b388;
+  height: 50px;
+}
+
+.navbaritems {
+  width: 100%;
+  height: 100%;
+  gap: 30px;
+  display: flex;
+  align-items: horizontal;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.navbaritems li {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbaritems a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.bus-route-icon {
+  color: white;
+  height: 50px;
+  width: 50px;
+}

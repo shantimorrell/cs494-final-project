@@ -77,50 +77,6 @@ export function Stops() {
           </ul>   
       </div>
   )
-//   FROM MAIN BEFORE MERGING
-//   // console.log(id)
-//   console.log(search);
-//   return (
-//     <div>
-//       <h2>Favorite Stops</h2>
-//       <ul>
-//         {favorite.map((stop, index) => (
-//           <li>
-//             {favorite[index]}{" "}
-//             <button
-//               onClick={() =>
-//                 setFavorite(favorite.filter((stop, index) => index))
-//               }
-//             >
-//               Delete
-//             </button>
-//           </li>
-//         ))}
-//       </ul>
-//       <h2>
-//         Select a Favorite Stop or Search{" "}
-//         <input id="search" onChange={search_input} />
-//       </h2>
-//       <ul>
-//         {id.map((stop, index) => (
-//           <div>
-//             {Search(search, stops[id[index]].name) && (
-//               <li>
-//                 {stops[id[index]].name}{" "}
-//                 <button
-//                   onClick={() =>
-//                     setFavorite(favorite.concat(stops[id[index]].name))
-//                   }
-//                 >
-//                   Select
-//                 </button>
-//               </li>
-//             )}
-//           </div>
-//         ))}
-//       </ul>
-//     </div>
-//   );
 }
 
 export function Search(input1, input2) {

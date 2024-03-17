@@ -17,7 +17,7 @@ export function Navbar() {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/viewStops">Favorite Stops<</Link>
+            <Link href="/viewStops">Favorite Stops</Link>
           </li>
           <li>
             <Link href="/editStops">Edit Favorite Stops</Link>

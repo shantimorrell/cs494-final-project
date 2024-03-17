@@ -16,6 +16,7 @@ export function Stops() {
     const [stops, setStops] = useState([])
     const [id, setID] = useState([])
     const [favorite, setFavorite] = useState([])
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         async function fetchStops() {
@@ -35,8 +36,13 @@ export function Stops() {
         }
         setID(ids)
     }, [stops])
+
+    function search_input() {
+        setSearch(document.getElementById("search").value)
+    }
     
     // console.log(id)
+    console.log(search)
     return(
         <div>
             <h2>Favorite Stops</h2>
@@ -45,13 +51,24 @@ export function Stops() {
                     <li>{favorite[index]} <button onClick={() => setFavorite(favorite.filter((stop, index) => index))}>Delete</button></li>
                 ))}
             </ul>
-            <h2>Select a Favorite Stop</h2>
+            <h2>Select a Favorite Stop or Search <input id="search" onChange={search_input}/></h2>
             <ul>
                 {id.map((stop, index) => (
-                    <li>{stops[id[index]].name} <button onClick={() => setFavorite(favorite.concat(stops[id[index]].name))}>Select</button></li>
+                    <div>
+                        {Search(search, stops[id[index]].name) &&
+                        <li>{stops[id[index]].name} <button onClick={() => setFavorite(favorite.concat(stops[id[index]].name))}>Select</button></li>}
+                    </div>
                 ))}
             </ul>   
         </div>
-        
     )
+}
+
+export function Search(input1, input2) {
+    for (let i = 0; i < input1.length; i++) {
+        if (input1[i] != input2[i]) {
+            return false
+        }
+    }
+    return true
 }

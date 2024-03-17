@@ -17,6 +17,7 @@ export function Stops() {
     const [stops, setStops] = useState([])
     const [id, setID] = useState([])
     let { favorite, setFavorite } = useContext(FavoriteStopsContext)
+    let { favoriteIDs, setFavoriteIDs } = useContext(FavoriteStopsContext)
     const [search, setSearch] = useState("")
 
     useEffect(() => {
@@ -49,15 +50,22 @@ export function Stops() {
             <h2>Favorite Stops</h2>
             <ul>
                 {favorite.map((stop, index) => (
-                    <li>{favorite[index]} <button onClick={() => setFavorite(favorite.filter((stop, index) => index))}>Delete</button></li>
+                    <li key={stop}>{favorite[index]} <button onClick={() => setFavorite(favorite.filter((stop, index) => index))}>Delete</button></li>
                 ))}
             </ul>
             <h2>Select a Favorite Stop or Search <input id="search" onChange={search_input}/></h2>
             <ul>
                 {id.map((stop, index) => (
-                    <div>
+                    <div key={stop}>
                         {Search(search, stops[id[index]].name) &&
-                        <li>{stops[id[index]].name} <button onClick={() => setFavorite(favorite.concat(stops[id[index]].name))}>Select</button></li>}
+                        <li>{stops[id[index]].name} 
+                            <button onClick={() => {
+                                setFavorite(favorite.concat(stops[id[index]].name));
+                                setFavoriteIDs(favoriteIDs.concat(id[index]));
+                            }}>
+                                Select
+                            </button>
+                        </li>}
                     </div>
                 ))}
             </ul>   

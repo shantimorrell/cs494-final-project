@@ -8,9 +8,10 @@ export default function ContextProvider(props) {
 
   const { children } = props
   const [ favorite, setFavorite ] = useState([])
+  const [ favoriteIDs, setFavoriteIDs ] = useState([])
   
   return (
-    <FavoriteStopsContext.Provider value={{ favorite, setFavorite }}>
+    <FavoriteStopsContext.Provider value={{ favorite, setFavorite, favoriteIDs, setFavoriteIDs }}>
       {children}
     </FavoriteStopsContext.Provider>
   )

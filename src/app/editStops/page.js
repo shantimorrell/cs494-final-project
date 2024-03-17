@@ -15,6 +15,7 @@ export default function EditStops() {
 export function Stops() {
     const [stops, setStops] = useState([])
     const [id, setID] = useState([])
+    const [favorite, setFavorite] = useState([])
 
     useEffect(() => {
         async function fetchStops() {
@@ -37,10 +38,20 @@ export function Stops() {
     
     // console.log(id)
     return(
-        <ul>
-            {id.map((stop, index) => (
-                <li>{stops[id[index]].name}</li>
-            ))}
-        </ul> 
+        <div>
+            <h2>Favorite Stops</h2>
+            <ul>
+                {favorite.map((stop, index) => (
+                    <li>{favorite[index]} <button onClick={() => setFavorite(favorite.filter((stop, index) => index))}>Delete</button></li>
+                ))}
+            </ul>
+            <h2>Select a Favorite Stop</h2>
+            <ul>
+                {id.map((stop, index) => (
+                    <li>{stops[id[index]].name} <button onClick={() => setFavorite(favorite.concat(stops[id[index]].name))}>Select</button></li>
+                ))}
+            </ul>   
+        </div>
+        
     )
 }

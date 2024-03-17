@@ -1,12 +1,13 @@
-import styles from "./page.module.css";
+import "./home.css";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
+    <main className="main">
+      <div className="description-box">
+        <p className="welcome-message">Welcome to Corvallis Bus Routes!</p>
+        <p className="welcome-description">
+          Get real-time information about your favorite bus stops in Corvallis,
+          Oregon
         </p>
       </div>
     </main>

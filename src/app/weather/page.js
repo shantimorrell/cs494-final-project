@@ -1,29 +1,73 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
-import styles from "../page.module.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faThermometerHalf,
+  faBinoculars,
+  faWind,
+} from "@fortawesome/free-solid-svg-icons";
+import "./weather.css";
 export default function Weather() {
-    const [weather, setWeather] = useState("")
-    useEffect(() => {
-        async function fetchWeather() {
-            const weather_response = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=44.5645659&lon=-123.2620435&appid=4cbd262696137f2d879fbd6b01b274ea")
-            const weather_json = await weather_response.json()
-            setWeather(weather_json)
-
-        } fetchWeather()
-    }, [])
-    return(
-        <div className={styles.main}>
-            <h1>Weather for Corvallis, Oregon</h1>
-            {weather &&
-            <ul>
-                <li>Temperature: {Math.round((weather.list[0].main.temp - 272.15) * 1.8 + 32)} Degrees Farenheit</li>
-                <li>Humidity: {weather.list[0].main.humidity}</li>
-                <li>Description: {weather.list[0].weather[0].description}</li>
-                <li>Wind Speed: {weather.list[0].wind.speed} Meters Per Second</li>
-                <li>Visibility: {weather.list[0].visibility} Meters</li>
-            </ul>}
+  const [weather, setWeather] = useState("");
+  useEffect(() => {
+    async function fetchWeather() {
+      const weather_response = await fetch(
+        "https://api.openweathermap.org/data/2.5/forecast?lat=44.5645659&lon=-123.2620435&appid=4cbd262696137f2d879fbd6b01b274ea"
+      );
+      const weather_json = await weather_response.json();
+      setWeather(weather_json);
+    }
+    fetchWeather();
+  }, []);
+  return (
+    <div className="weather-background">
+      <h1 className="weather-title">Current Weather in Corvallis, Oregon</h1>
+      {weather && (
+        <div className="weather-info-boxes-container">
+          <div className="temp-humidity-box">
+            <div className="weather-temp">
+              <FontAwesomeIcon
+                className="weather-temp-icon"
+                icon={faThermometerHalf}
+                style={{
+                  color: `${
+                    (weather.list[0].main.temp - 272.15) * 1.8 + 32 > 50
+                      ? "red"
+                      : "lightblue"
+                  }`,
+                }}
+              />
+              <p className="weather-temp-text">
+                {Math.round((weather.list[0].main.temp - 272.15) * 1.8 + 32)} °F
+              </p>
+            </div>
+            <p className="weather-humidity-text">
+              Humidity: {weather.list[0].main.humidity}%
+            </p>
+          </div>
+          <div className="weather-description-box">
+            <p className="weather-description">
+              {weather.list[0].weather[0].description}
+            </p>
+            <div className="visibility-box">
+              <FontAwesomeIcon
+                className="visibility-icon"
+                icon={faBinoculars}
+              />
+              <p className="weather-visibility">
+                {Math.round(weather.list[0].visibility * 3.281)} feet
+              </p>
+            </div>
+          </div>
+          <div className="weather-wind-box">
+            <FontAwesomeIcon className="wind-icon" icon={faWind} />
+            <p className="wind-text">
+              {Math.round(weather.list[0].wind.speed * 2.237)} mph
+            </p>
+          </div>
         </div>
-    )
+      )}
+    </div>
+  );
 }

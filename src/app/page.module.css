@@ -1,5 +1,6 @@
 .main {
-  background-image: url("/corvallis-background-image.jpg");
+  background-image: url("/corvallis-bus.jpg");
+  background-position: bottom;
   background-size: cover;
   display: flex;
   flex-direction: column;

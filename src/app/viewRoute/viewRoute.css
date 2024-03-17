@@ -1,0 +1,168 @@
+/*styles for container that surrounds routes page*/
+.route-info-box {
+  width: 100%;
+  min-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+/*styling for side bar*/
+.route-side-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  min-height: calc(100vh - 150px);
+  background-color: #b0b6bc;
+}
+
+.route-side-bar ul {
+  width: 95%;
+  list-style: none;
+  margin: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.route-side-bar-item {
+  width: 90%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.route-side-bar-item a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+/*styling for specific route information (on right side of sidebar*/
+.route-main-info-box {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  flex: 1;
+}
+
+.route-title {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.route-title-icon {
+  height: 50px;
+  width: 50px;
+}
+
+.route-title h1 {
+  font-size: 50px;
+}
+
+/*styling for title of route and more information button*/
+.more-info-link {
+  height: 50px;
+  width: 180px;
+  border-radius: 5px;
+  background-color: #8f9397;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more-info-link:hover {
+  background-color: #777e5c;
+}
+.more-info-link a {
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.title-information-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+/*styling for route landing page*/
+.route-landing-page-description {
+  padding-top: 20px;
+  max-width: 800px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: rgb(46, 45, 45);
+}
+
+.route-info-landing-page-title {
+  color: rgb(46, 45, 45);
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.route-landing-page-icon{
+  width: 60px;
+  height: 60px;
+  color: rgb(46, 45, 45);
+}
+
+/*styling for list of stops at a specific route*/
+
+.following-stops-message {
+  font-size: 25px;
+  color: rgb(46, 45, 45);
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+
+.route-stops-box ol {
+  list-style: none;
+}
+
+.route-stops-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.route-stop-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  color: white;
+  font-size: 18px;
+}
+
+.stop-box {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.stop-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(102, 100, 100);
+}

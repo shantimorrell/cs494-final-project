@@ -65,7 +65,10 @@ export default function ViewStops() {
           {!data && 
             <div>
               <p>You don't have any favorite stops yet!</p>
-              <button><Link href="/editStops">Add Favorite Stops</Link></button>
+              <button className="add-stops-button">
+                <Link href="/editStops">Add Favorite Stops</Link>
+
+              </button>
             </div>
           }
           {!loading && data &&

@@ -1,0 +1,139 @@
+/* Styling for whole page (title and content) */
+.stop-main-info-box {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  flex: 1;
+}
+
+
+/* Styling for title and icon div */
+.stop-title {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+
+.stop-landing-page-title {
+  color: rgb(46, 45, 45);
+  font-size: 50px;
+  font-weight: 600;
+}
+
+
+.stop-landing-page-icon{
+  width: 60px;
+  height: 60px;
+  color: rgb(46, 45, 45);
+}
+
+/* Styling for content of page */
+.stop-landing-page-description {
+  padding-top: 20px;
+  /* max-width: 800px; */
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  /* flex-grow: 1; */
+  gap: 20px;
+  color: rgb(46, 45, 45);
+  /* width: 100%; */
+}
+
+
+/* Add favorite stops button */
+.add-stops-button {
+  margin: 36px 0px;
+  height: 50px;
+  width: 180px;
+  border-radius: 5px;
+  background-color: #8f9397;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.add-stops-button:hover {
+  background-color: #777e5c;
+}
+.add-stops-button a {
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Favorite stops styling */
+.favorite-stops-container {
+  /* flex-grow: 1; */
+  padding: 24px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+
+.stop-card {
+  padding: 50px 50px;
+  border: 2px solid #8f9397;
+  border-radius: 20px;
+  width: 350px;
+}
+
+.stop-name {
+  padding: 0px 0px 10px 0px;
+  border-bottom: 3px solid #777e5c;
+}
+
+
+/* Contains Arriving info */
+.stop-info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px 0px 0px;
+}
+
+
+/* Contains info for one arriving route/bus */
+.stop-bus-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px;
+}
+
+/* Containes bus route title/link */
+.bus-route {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0px;
+  color: white;
+  text-decoration: none;
+  justify-content: space-between;
+  /* gap: 20px; */
+
+}
+
+/* Contains status and arriving time */
+.bus-arrival-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+/* Arriving title */
+.stop-card h3 {
+  color: #8f9397;
+  font-weight: 300;
+}

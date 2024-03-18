@@ -4,6 +4,10 @@ import { FavoriteStopsContext } from "../context"
 import { Stop } from "./stop"
 import { Spinner } from "../components/spinner"
 import Link from "next/link"
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+import "./viewStops.css"
 
 export default function ViewStops() {
   let { favoriteIDs } = useContext(FavoriteStopsContext)
@@ -51,21 +55,31 @@ export default function ViewStops() {
 
   return (
     <>
-      <h1>Favorite Stops</h1>
-      {loading && <Spinner />}
-      {!data && 
-        <div>
-          <p>You don't have any favorite stops yet!</p>
-          <button><Link href="/editStops">Add Favorite Stops</Link></button>
+      <div className="stop-main-info-box">
+        <div className="stop-title">
+          <FontAwesomeIcon className="stop-landing-page-icon" icon={faLocationDot} />
+          <h1 className="stop-landing-page-title">Favorite Stops</h1>
         </div>
-      }
-      {!loading && data &&
-        <div>
-          {Object.keys(data).map((stop) => 
-            <Stop key={data[stop].stopID} stop={data[stop]} />
-          )}
+        <div className="stop-landing-page-description">
+          {loading && <Spinner />}
+          {!data && 
+            <div>
+              <p>You don't have any favorite stops yet!</p>
+              <button className="add-stops-button">
+                <Link href="/editStops">Add Favorite Stops</Link>
+
+              </button>
+            </div>
+          }
+          {!loading && data &&
+            <div className="favorite-stops-container">
+              {Object.keys(data).map((stop) => 
+                <Stop key={data[stop].stopID} stop={data[stop]} />
+              )}
+            </div>
+          }
         </div>
-      }
+      </div>
     </>
   )
 }

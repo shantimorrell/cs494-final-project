@@ -1,0 +1,42 @@
+/* Styling for whole page (title and content) */
+.stop-main-info-box {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  flex: 1;
+}
+
+
+/* Styling for title and icon div */
+.stop-title {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+
+.stop-landing-page-title {
+  color: rgb(46, 45, 45);
+  font-size: 50px;
+  font-weight: 600;
+}
+
+
+.stop-landing-page-icon{
+  width: 60px;
+  height: 60px;
+  color: rgb(46, 45, 45);
+}
+
+/* Styling for content of page */
+.stop-landing-page-description {
+  padding-top: 20px;
+  max-width: 800px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: rgb(46, 45, 45);
+}

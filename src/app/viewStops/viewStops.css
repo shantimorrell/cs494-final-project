@@ -33,18 +33,20 @@
 /* Styling for content of page */
 .stop-landing-page-description {
   padding-top: 20px;
-  max-width: 800px;
+  /* max-width: 800px; */
   font-size: 18px;
   display: flex;
   flex-direction: column;
+  /* flex-grow: 1; */
   gap: 20px;
   color: rgb(46, 45, 45);
+  /* width: 100%; */
 }
 
 
 /* Add favorite stops button */
 .add-stops-button {
-  /* padding: 10px; */
+  margin: 36px 0px;
   height: 50px;
   width: 180px;
   border-radius: 5px;
@@ -68,4 +70,64 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+/* Favorite stops styling */
+.favorite-stops-container {
+  /* flex-grow: 1; */
+  padding: 24px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+
+.stop-card {
+  padding: 50px 50px;
+  border: 2px solid #8f9397;
+  border-radius: 20px;
+  width: 350px;
+}
+
+.stop-name {
+  padding: 0px 0px 10px 0px;
+  border-bottom: 3px solid #777e5c;
+}
+
+
+/* Contains Arriving info */
+.stop-info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px 0px 0px;
+}
+
+
+/* Contains info for one arriving route/bus */
+.stop-bus-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px;
+}
+
+/* Containes bus route */
+.bus-route-container {
+  display: flex;
+  flex-direction: row;
+  
+  /* gap: 20px; */
+}
+
+
+/* Contains status and arriving time */
+.bus-arrival-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+/* Arriving title */
+.stop-card h3 {
+  color: #8f9397;
+  font-weight: 300;
 }

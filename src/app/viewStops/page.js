@@ -72,7 +72,7 @@ export default function ViewStops() {
             </div>
           }
           {!loading && data &&
-            <div>
+            <div className="favorite-stops-container">
               {Object.keys(data).map((stop) => 
                 <Stop key={data[stop].stopID} stop={data[stop]} />
               )}

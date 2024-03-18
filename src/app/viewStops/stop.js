@@ -1,3 +1,5 @@
+import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 
 export function Stop(props) {
@@ -12,10 +14,16 @@ export function Stop(props) {
         <div className="stop-bus-container">
           {stop.firstRouteName && stop.firstRouteColor && stop.firstRouteArrivals ?
             <>
-              <div className="bus-route-container">
-                {/* <p>Next arriving: </p> */}
-                <Link href={`/viewRoute/${stop.firstRouteName}`}>Route {stop.firstRouteName}</Link>
-              </div>
+
+              <Link 
+                className="bus-route" 
+                href={`/viewRoute/${stop.firstRouteName}`}
+                style={{ backgroundColor: `#${stop.firstRouteColor}` }}
+
+              >
+                <p>Route {stop.firstRouteName}</p>
+                <FontAwesomeIcon icon={faUpRightFromSquare} />
+              </Link>
               <div className="bus-arrival-container">
                 <p className="status-title">Status:</p>
                 <p>{stop.firstRouteArrivals}</p>
@@ -28,9 +36,15 @@ export function Stop(props) {
         <div className="stop-bus-container">
           {stop.secondRouteName && stop.secondRouteColor && stop.secondRouteArrivals &&
             <>
-              <div className="bus-route-container">
-                <Link href={`/viewRoute/${stop.secondRouteName}`}>Route {stop.secondRouteName}</Link>
-              </div>
+              <Link 
+                className="bus-route" 
+                href={`/viewRoute/${stop.secondRouteName}`}
+                style={{ backgroundColor: `#${stop.secondRouteColor}` }}
+
+              >
+                <p>Route {stop.secondRouteName}</p>
+                <FontAwesomeIcon icon={faUpRightFromSquare} />
+              </Link>
               <div className="bus-arrival-container">
                 <p className="status-title">Status:</p>
                 <p>{stop.secondRouteArrivals}</p>

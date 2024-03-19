@@ -1,0 +1,247 @@
+/*styles for container that surrounds edit stops page*/
+.edit-stops-background {
+  width: 100%;
+  min-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+/*favorite stops side bar*/
+.edit-favorite-stops-side-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 350px;
+  min-height: calc(100vh - 150px);
+  background-color: #b0b6bc;
+  position: fixed;
+  overflow-y: auto;
+}
+
+.edit-favorite-stops-side-bar h2 {
+  color: rgb(46, 45, 45);
+  font-size: 40px;
+  font-weight: 600;
+  padding-top: 20px;
+}
+
+.favorite-stops-side-bar-list {
+  width: 90%;
+  height: calc(100vh - 260px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.favorite-stop-side-bar-item {
+  background-color: white;
+  width: 100%;
+  min-height: 65px;
+  border: 2px solid #777e5c;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 0;
+}
+
+.side-bar-item-street-name {
+  max-width: 70%;
+  padding-left: 5px;
+}
+
+.favorite-stop-side-bar-item button {
+  background-color: transparent;
+  border: none;
+}
+
+.side-bar-trash-can {
+  height: 30px;
+  width: 30px;
+  color: rgb(255, 156, 156);
+  padding-right: 10px;
+}
+
+.side-bar-trash-can:hover {
+  color: rgb(201, 103, 103);
+}
+
+/*styling for everything right of the sidebar*/
+.find-a-stop-box {
+  flex: 1;
+  margin-left: 350px;
+  padding-left: 30px;
+  padding-top: 15px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+}
+
+/*styling for find a stop title and search bar*/
+.title-search-bar-container {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  margin-bottom: 40px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.find-a-stop-title {
+  color: rgb(46, 45, 45);
+  padding-left: 20px;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.title-search-bar-container input {
+  height: 40px;
+  width: 250px;
+  border-radius: 7px;
+  border: 2px solid #777e5c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 3px;
+}
+
+/*styling for container that holds all of the stop cards*/
+.stop-cards-container {
+  display: flex;
+  margin-left: 20px;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/*styling for the cards with each available stop*/
+.edit-favorites-stop-card {
+  padding: 50px 50px;
+  border: 2px solid #8f9397;
+  border-radius: 20px;
+  width: 350px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-favorites-stop-name {
+  height: 180px;
+  padding: 0px 0px 10px 0px;
+  color: rgb(46, 45, 45);
+  font-size: 30px;
+  font-weight: 400;
+  border-bottom: 3px solid #777e5c;
+}
+
+.add-to-favorites-button {
+  width: 170px;
+  height: 50px;
+  border-radius: 7px;
+  border-width: 0px;
+  margin-left: 35px;
+  color: rgb(46, 45, 45);
+  font-size: 15px;
+  background-color: #c7d2a1;
+}
+
+.add-to-favorites-button:hover {
+  background-color: #94a555;
+}
+
+.remove-from-favorites-button {
+  width: 170px;
+  height: 50px;
+  border-radius: 7px;
+  border-width: 0px;
+  margin-left: 35px;
+  color: rgb(46, 45, 45);
+  font-size: 15px;
+  background-color: rgb(255, 156, 156);
+}
+
+.remove-from-favorites-button:hover {
+  background-color: rgb(201, 103, 103);
+}
+
+@media screen and (max-width: 800px) {
+  .edit-stops-background {
+    margin-top: 160px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .edit-favorites-stop-card {
+    padding: 30px 30px;
+    width: 275px;
+    height: 300px;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .edit-favorite-stops-side-bar {
+    width: 250px;
+  }
+  .find-a-stop-box {
+    margin-left: 220px;
+  }
+  .title-search-bar-container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .find-a-stop-title {
+    font-size: 25px;
+  }
+  .title-search-bar-container input {
+    width: 120px;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 550px) {
+  .edit-stops-background {
+    margin-top: 380px;
+  }
+  .edit-favorite-stops-side-bar {
+    width: 150px;
+  }
+  .edit-favorites-stop-card {
+    width: 150px;
+  }
+  .remove-from-favorites-button {
+    width: 100px;
+    margin: 0;
+    margin-top: 10px;
+  }
+  .add-to-favorites-button {
+    width: 100px;
+    margin: 0;
+    margin-top: 10px;
+  }
+
+  .edit-favorites-stop-name {
+    font-size: 20px;
+  }
+  .edit-favorite-stops-side-bar ul {
+    overflow-y: auto;
+  }
+  .find-a-stop-box {
+    margin-left: 105px;
+  }
+  .edit-favorite-stops-side-bar h2 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .sitetitle {
+    font-size: 35px;
+  }
+}

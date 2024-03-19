@@ -15,7 +15,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // const [ favoriteStops, setFavoriteStops ] = useState([]) 
+  // const [ favoriteStops, setFavoriteStops ] = useState([])
 
   return (
     <html lang="en">
@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         {/* <FavoriteStopsContext.Provider value={{ favoriteStops }}> */}
         <ContextProvider>
           <Navbar />
-          {children}
+          <div className="content">{children}</div>
         </ContextProvider>
 
         {/* </FavoriteStopsContext.Provider> */}

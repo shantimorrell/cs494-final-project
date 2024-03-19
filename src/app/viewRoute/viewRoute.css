@@ -13,7 +13,8 @@
   flex-direction: column;
   align-items: center;
   width: 300px;
-  min-height: calc(100vh - 150px);
+  height: calc(100vh - 150px);
+  position: fixed;
   background-color: #b0b6bc;
 }
 
@@ -31,7 +32,7 @@
 
 .route-side-bar-item {
   width: 90%;
-  height: 50px;
+  min-height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -52,6 +53,7 @@
   padding-right: 20px;
   padding-bottom: 50px;
   flex: 1;
+  margin-left: 300px;
 }
 
 .route-title {
@@ -165,4 +167,57 @@
   font-size: 20px;
   font-weight: 500;
   color: rgb(102, 100, 100);
+}
+
+@media screen and (max-width: 800px) {
+  .route-info-box {
+    margin-top: 160px;
+  }
+  .title-information-header {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .more-info-link {
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .route-title h1 {
+    font-size: 30px;
+  }
+  .route-title-icon {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .route-info-box {
+    height: calc(100vh - 380px);
+    margin-top: 380px;
+  }
+  .route-side-bar {
+    width: 150px;
+    height: calc(100vh - 380px);
+  }
+
+  .route-main-info-box {
+    margin-left: 130px;
+    width: 150px;
+  }
+
+  .route-info-landing-page-title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .route-info-landing-page-title {
+    font-size: 10px;
+  }
+  .route-landing-page-icon {
+    height: 20px;
+    width: 20px;
+  }
 }

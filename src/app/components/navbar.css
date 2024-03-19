@@ -2,10 +2,13 @@
 .sitetitlebox {
   background-color: #5f6f52;
   height: 100px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  position: fixed;
+  top: 0;
 }
 
 .sitetitle {
@@ -16,8 +19,11 @@
 
 /*styles for navbar*/
 .navbar {
+  position: fixed;
   background-color: #a9b388;
+  width: 100%;
   height: 50px;
+  top: 100px;
 }
 
 .navbaritems {
@@ -49,4 +55,31 @@
   color: white;
   height: 50px;
   width: 50px;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar {
+    height: 60px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .navbaritems {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar {
+    top: 130px;
+    height: 250px;
+  }
+
+  .sitetitlebox {
+    height: 130px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .sitetitle {
+    font-size: 35px;
+  }
 }

@@ -7,7 +7,6 @@
   flex: 1;
 }
 
-
 /* Styling for title and icon div */
 .stop-title {
   display: flex;
@@ -16,15 +15,13 @@
   align-items: center;
 }
 
-
 .stop-landing-page-title {
   color: rgb(46, 45, 45);
   font-size: 50px;
   font-weight: 600;
 }
 
-
-.stop-landing-page-icon{
+.stop-landing-page-icon {
   width: 60px;
   height: 60px;
   color: rgb(46, 45, 45);
@@ -42,7 +39,6 @@
   color: rgb(46, 45, 45);
   /* width: 100%; */
 }
-
 
 /* Add favorite stops button */
 .add-stops-button {
@@ -72,7 +68,6 @@
   justify-content: center;
 }
 
-
 /* Favorite stops styling */
 .favorite-stops-container {
   /* flex-grow: 1; */
@@ -94,14 +89,12 @@
   border-bottom: 3px solid #777e5c;
 }
 
-
 /* Contains Arriving info */
 .stop-info {
   display: flex;
   flex-direction: column;
   padding: 20px 0px 0px 0px;
 }
-
 
 /* Contains info for one arriving route/bus */
 .stop-bus-container {
@@ -121,7 +114,6 @@
   text-decoration: none;
   justify-content: space-between;
   /* gap: 20px; */
-
 }
 
 /* Contains status and arriving time */
@@ -136,4 +128,44 @@
 .stop-card h3 {
   color: #8f9397;
   font-weight: 300;
+}
+
+@media screen and (max-width: 800px) {
+  .stop-main-info-box {
+    margin-top: 160px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .navbaritems {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar {
+    top: 130px;
+    height: 250px;
+  }
+
+  .sitetitlebox {
+    height: 130px;
+  }
+
+  .stop-main-info-box {
+    margin-top: 380px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .sitetitle {
+    font-size: 35px;
+  }
+  .stop-landing-page-title {
+    font-size: 30px;
+  }
+
+  .stop-landing-page-icon {
+    width: 30px;
+    height: 30px;
+  }
 }

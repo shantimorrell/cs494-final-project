@@ -4,8 +4,14 @@
   min-height: calc(100vh - 150px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+}
+
+@media screen and (min-width: 650px) {
+  .weather-background {
+    padding: 50px 0px 0px 0px;
+  }
 }
 
 .weather-title {

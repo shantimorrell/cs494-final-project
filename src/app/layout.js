@@ -2,11 +2,8 @@ import { Inter } from "next/font/google";
 import { Navbar } from "./components/navbar";
 import "./globals.css";
 import ContextProvider from "./context";
-// import { createContext, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
-
-// const FavoriteStopsContext = createContext([])
 
 export const metadata = {
   title: "Create Next App",
@@ -15,18 +12,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // const [ favoriteStops, setFavoriteStops ] = useState([])
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <FavoriteStopsContext.Provider value={{ favoriteStops }}> */}
         <ContextProvider>
           <Navbar />
           <div className="content">{children}</div>
         </ContextProvider>
-
-        {/* </FavoriteStopsContext.Provider> */}
       </body>
     </html>
   );

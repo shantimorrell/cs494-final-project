@@ -8,21 +8,26 @@ import {
   faWind,
 } from "@fortawesome/free-solid-svg-icons";
 import "./weather.css";
+import { Spinner } from "../components/spinner";
 export default function Weather() {
   const [weather, setWeather] = useState("");
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
     async function fetchWeather() {
+      setLoading(true)
       const weather_response = await fetch(
         "https://api.openweathermap.org/data/2.5/forecast?lat=44.5645659&lon=-123.2620435&appid=4cbd262696137f2d879fbd6b01b274ea"
       );
       const weather_json = await weather_response.json();
       setWeather(weather_json);
+      setLoading(false)
     }
     fetchWeather();
   }, []);
   return (
     <div className="weather-background">
       <h1 className="weather-title">Current Weather in Corvallis, Oregon</h1>
+      {loading && <Spinner />}
       {weather && (
         <div className="weather-info-boxes-container">
           <div className="temp-humidity-box">

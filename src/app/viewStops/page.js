@@ -44,6 +44,7 @@ export default function ViewStops() {
         setError(null);
       } catch (err) {
         setError(true);
+        setLoading(false)
         console.error(err);
       }
     }
@@ -64,7 +65,7 @@ export default function ViewStops() {
         </div>
         <div className="stop-landing-page-description">
           {loading && <Spinner />}
-          {!data && (
+          {!loading && !data && (
             <div>
               <p>You don't have any favorite stops yet!</p>
               <button className="add-stops-button">

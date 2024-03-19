@@ -1,7 +1,10 @@
 .sk-chase {
-  width: 40px;
-  height: 40px;
-  position: relative;
+  width: 100px;
+  height: 100px;
+  /* position: relative; */
+  position: absolute;
+  top: 50%;
+  left: calc(50vw - 50px);
   animation: sk-chase 2.5s infinite linear both;
 }
 
@@ -17,9 +20,9 @@
 .sk-chase-dot:before {
   content: '';
   display: block;
-  width: 25%;
-  height: 25%;
-  background-color: #fff;
+  width: 30%;
+  height: 30%;
+  background-color: #a9b388;
   border-radius: 100%;
   animation: sk-chase-dot-before 2.0s infinite ease-in-out both; 
 }
@@ -51,4 +54,10 @@
   } 100%, 0% {
     transform: scale(1.0); 
   } 
+}
+
+@media screen and (max-width: 800px) {
+  .sk-chase {
+    top: calc(75vh);
+  }
 }

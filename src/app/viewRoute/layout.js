@@ -3,9 +3,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import "./viewRoute.css";
+import { Spinner } from "../components/spinner";
 
 export default function RouteLayout({ children }) {
   const [routes, setRoutes] = useState({});
+  const [loading, setLoading] = useState(true)
 
   // Fetch route data from static api
   useEffect(() => {
@@ -14,29 +16,35 @@ export default function RouteLayout({ children }) {
       const resBody = await res.json();
       const routeData = resBody["routes"];
       setRoutes(routeData);
+      setLoading(false)
     }
 
     fetchRoutes();
   }, []);
 
   return (
-    <div className="route-info-box">
-      <aside className="route-side-bar">
-        <ul>
-          {Object.keys(routes).map((id) => (
-            <li
-              className="route-side-bar-item"
-              key={id}
-              style={{ backgroundColor: `#${routes[id].color}` }}
-            >
-              <Link href={`/viewRoute/${routes[id].routeNo}`}>
-                Route {routes[id].routeNo}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </aside>
-      <div className="route-main-info-box">{children}</div>
-    </div>
+    <>
+      {loading && <Spinner />}
+      {!loading &&
+        <div className="route-info-box">
+          <aside className="route-side-bar">
+            <ul>
+              {Object.keys(routes).map((id) => (
+                <li
+                  className="route-side-bar-item"
+                  key={id}
+                  style={{ backgroundColor: `#${routes[id].color}` }}
+                >
+                  <Link href={`/viewRoute/${routes[id].routeNo}`}>
+                    Route {routes[id].routeNo}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
+          <div className="route-main-info-box">{children}</div>
+        </div>
+      }
+    </>
   );
 }

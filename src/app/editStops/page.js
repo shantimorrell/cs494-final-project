@@ -6,77 +6,125 @@ import { FavoriteStopsContext } from "../context";
 import "./editStops.css";
 
 export default function EditStops() {
-  return (
-    <div className="edit-stops-background">
-      <h1>Edit Favorite Stops</h1>
-      <Stops />
-    </div>
-  );
+  return <Stops />;
 }
 
 export function Stops() {
-  const [stops, setStops] = useState([])
-  const [id, setID] = useState([])
-  let { favorite, setFavorite } = useContext(FavoriteStopsContext)
-  let { favoriteIDs, setFavoriteIDs } = useContext(FavoriteStopsContext)
-  const [search, setSearch] = useState("")
+  //this stores an array of all of the bus stops in Corvallis.
+  //Each item in the array has this format:  {id: 123... , name: NW Witham... }
+  const [stops, setStops] = useState([]);
+  const [search, setSearch] = useState("");
 
+  //use context to keep track of favorite stops
+  let { favorites, setFavorites } = useContext(FavoriteStopsContext);
 
   useEffect(() => {
     async function fetchStops() {
       const stops_response = await fetch("https://corvallisb.us/api/static");
       const stops_json = await stops_response.json();
-      setStops(stops_json.stops);
+
+      //convert the stops field from json format into an array
+      const stops_arr = Object.values(stops_json.stops);
+
+      //stops will be an array of objects, each with a name and id field
+      const stops_formatted_arr = stops_arr.map((stop) => ({
+        id: stop.id,
+        name: stop.name,
+      }));
+
+      setStops(stops_formatted_arr);
     }
     fetchStops();
   }, []);
-
-  // console.log("Stops: ", stops)
-  // Get stop ID from JSON
-  useEffect(() => {
-    const ids = [];
-    for (let id in stops) {
-      ids[ids.length] = id;
-    }
-    setID(ids);
-  }, [stops]);
 
   function search_input() {
     setSearch(document.getElementById("search").value);
   }
 
   function search_input() {
-      setSearch(document.getElementById("search").value)
+    setSearch(document.getElementById("search").value);
   }
 
-  // console.log(id)
-  console.log(search)
-  return(
-      <div>
-          <h2>Favorite Stops</h2>
-          <ul>
-              {favorite.map((stop, index) => (
-                  <li key={stop}>{favorite[index]} <button onClick={() => setFavorite(favorite.filter((stop, index) => index))}>Delete</button></li>
-              ))}
-          </ul>
-          <h2>Select a Favorite Stop or Search <input id="search" onChange={search_input}/></h2>
-          <ul>
-              {id.map((stop, index) => (
-                  <div key={stop}>
-                      {Search(search, stops[id[index]].name) &&
-                      <li>{stops[id[index]].name} 
-                          <button onClick={() => {
-                              setFavorite(favorite.concat(stops[id[index]].name));
-                              setFavoriteIDs(favoriteIDs.concat(id[index]));
-                          }}>
-                              Select
-                          </button>
-                      </li>}
-                  </div>
-              ))}
-          </ul>   
+  //function to check if the current stop is already in favorites
+  //prevents same stop from being added twice
+  function alreadyInFavorites(stop) {
+    for (let i = 0; i < favorites.length; i++) {
+      if (favorites[i].id === stop.id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  return (
+    <div className="edit-stops-background">
+      <div className="edit-favorite-stops-side-bar">
+        <h2>Favorites</h2>
+        <ul>
+          {favorites.map((stop) => (
+            <li key={stop.id}>
+              {stop.name}
+              <button
+                onClick={() => {
+                  setFavorites(
+                    favorites.filter(
+                      (favoriteStop) => favoriteStop.id !== stop.id
+                    )
+                  );
+                }}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
-  )
+      <div className="find-a-stop-box">
+        <div className="title-search-bar-container">
+          <h2 className="find-a-stop-title">Find a Stop</h2>
+          <input
+            id="search"
+            placeholder="Search for a stop..."
+            onChange={search_input}
+          />
+        </div>
+        <ul className="stop-cards-container">
+          {stops.map((stopObject) => (
+            <div key={stopObject.id}>
+              {Search(search, stopObject.name) && (
+                <li className="edit-favorites-stop-card">
+                  <p className="edit-favorites-stop-name">{stopObject.name}</p>
+                  {!alreadyInFavorites(stopObject) ? (
+                    <button
+                      className="add-to-favorites-button"
+                      onClick={() => {
+                        setFavorites(favorites.concat(stopObject));
+                      }}
+                    >
+                      Add to Favorites
+                    </button>
+                  ) : (
+                    <button
+                      className="remove-from-favorites-button"
+                      onClick={() => {
+                        setFavorites(
+                          favorites.filter(
+                            (favItem) => favItem.id !== stopObject.id
+                          )
+                        );
+                      }}
+                    >
+                      Remove
+                    </button>
+                  )}
+                </li>
+              )}
+            </div>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export function Search(input1, input2) {

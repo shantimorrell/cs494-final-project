@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect, useContext } from "react";
-import styles from "../page.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FavoriteStopsContext } from "../context";
+
 import "./editStops.css";
 
 export default function EditStops() {
@@ -14,6 +16,8 @@ export function Stops() {
   //Each item in the array has this format:  {id: 123... , name: NW Witham... }
   const [stops, setStops] = useState([]);
   const [search, setSearch] = useState("");
+  //this is to store the stops that are currently in the search filter
+  const [filteredStops, setFilteredStops] = useState([]);
 
   //use context to keep track of favorite stops
   let { favorites, setFavorites } = useContext(FavoriteStopsContext);
@@ -36,6 +40,12 @@ export function Stops() {
     }
     fetchStops();
   }, []);
+
+  //every time there is a change to the search or stops state, update filteredStops state
+  useEffect(() => {
+    const searchedStops = stops.filter((stop) => Search(search, stop.name));
+    setFilteredStops(searchedStops);
+  }, [search, stops]);
 
   function search_input() {
     setSearch(document.getElementById("search").value);
@@ -60,24 +70,31 @@ export function Stops() {
     <div className="edit-stops-background">
       <div className="edit-favorite-stops-side-bar">
         <h2>Favorites</h2>
-        <ul>
-          {favorites.map((stop) => (
-            <li key={stop.id}>
-              {stop.name}
-              <button
-                onClick={() => {
-                  setFavorites(
-                    favorites.filter(
-                      (favoriteStop) => favoriteStop.id !== stop.id
-                    )
-                  );
-                }}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
+        {favorites.length > 0 ? (
+          <ul className="favorite-stops-side-bar-list">
+            {favorites.map((stop) => (
+              <li key={stop.id} className="favorite-stop-side-bar-item">
+                <p className="side-bar-item-street-name">{stop.name}</p>
+                <button
+                  onClick={() => {
+                    setFavorites(
+                      favorites.filter(
+                        (favoriteStop) => favoriteStop.id !== stop.id
+                      )
+                    );
+                  }}
+                >
+                  <FontAwesomeIcon
+                    className="side-bar-trash-can"
+                    icon={faTrash}
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>You don't have any favorite stops yet!</p>
+        )}
       </div>
       <div className="find-a-stop-box">
         <div className="title-search-bar-container">
@@ -89,9 +106,9 @@ export function Stops() {
           />
         </div>
         <ul className="stop-cards-container">
-          {stops.map((stopObject) => (
-            <div key={stopObject.id}>
-              {Search(search, stopObject.name) && (
+          {filteredStops.length > 0 ? (
+            filteredStops.map((stopObject) => (
+              <div key={stopObject.id}>
                 <li className="edit-favorites-stop-card">
                   <p className="edit-favorites-stop-name">{stopObject.name}</p>
                   {!alreadyInFavorites(stopObject) ? (
@@ -118,9 +135,11 @@ export function Stops() {
                     </button>
                   )}
                 </li>
-              )}
-            </div>
-          ))}
+              </div>
+            ))
+          ) : (
+            <p>No stops matching your search</p>
+          )}
         </ul>
       </div>
     </div>
@@ -128,10 +147,7 @@ export function Stops() {
 }
 
 export function Search(input1, input2) {
-  for (let i = 0; i < input1.length; i++) {
-    if (input1[i] != input2[i]) {
-      return false;
-    }
-  }
-  return true;
+  const lowerInput1 = input1.toLowerCase();
+  const lowerInput2 = input2.toLowerCase();
+  return lowerInput2.includes(lowerInput1);
 }

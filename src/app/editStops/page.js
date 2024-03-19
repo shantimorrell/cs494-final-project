@@ -6,6 +6,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FavoriteStopsContext } from "../context";
 
 import "./editStops.css";
+import { Spinner } from "../components/spinner";
 
 export default function EditStops() {
   return <Stops />;
@@ -19,11 +20,14 @@ export function Stops() {
   //this is to store the stops that are currently in the search filter
   const [filteredStops, setFilteredStops] = useState([]);
 
+  const [loading, setLoading] = useState(true)
+
   //use context to keep track of favorite stops
   let { favorites, setFavorites } = useContext(FavoriteStopsContext);
 
   useEffect(() => {
     async function fetchStops() {
+      setLoading(true)
       const stops_response = await fetch("https://corvallisb.us/api/static");
       const stops_json = await stops_response.json();
 
@@ -37,6 +41,7 @@ export function Stops() {
       }));
 
       setStops(stops_formatted_arr);
+      setLoading(false)
     }
     fetchStops();
   }, []);
@@ -105,42 +110,45 @@ export function Stops() {
             onChange={search_input}
           />
         </div>
-        <ul className="stop-cards-container">
-          {filteredStops.length > 0 ? (
-            filteredStops.map((stopObject) => (
-              <div key={stopObject.id}>
-                <li className="edit-favorites-stop-card">
-                  <p className="edit-favorites-stop-name">{stopObject.name}</p>
-                  {!alreadyInFavorites(stopObject) ? (
-                    <button
-                      className="add-to-favorites-button"
-                      onClick={() => {
-                        setFavorites(favorites.concat(stopObject));
-                      }}
-                    >
-                      Add to Favorites
-                    </button>
-                  ) : (
-                    <button
-                      className="remove-from-favorites-button"
-                      onClick={() => {
-                        setFavorites(
-                          favorites.filter(
-                            (favItem) => favItem.id !== stopObject.id
-                          )
-                        );
-                      }}
-                    >
-                      Remove
-                    </button>
-                  )}
-                </li>
-              </div>
-            ))
-          ) : (
-            <p>No stops matching your search</p>
-          )}
-        </ul>
+        {loading && <Spinner />}
+        {stops && !loading && 
+          <ul className="stop-cards-container">
+            {filteredStops.length > 0 ? (
+              filteredStops.map((stopObject) => (
+                <div key={stopObject.id}>
+                  <li className="edit-favorites-stop-card">
+                    <p className="edit-favorites-stop-name">{stopObject.name}</p>
+                    {!alreadyInFavorites(stopObject) ? (
+                      <button
+                        className="add-to-favorites-button"
+                        onClick={() => {
+                          setFavorites(favorites.concat(stopObject));
+                        }}
+                      >
+                        Add to Favorites
+                      </button>
+                    ) : (
+                      <button
+                        className="remove-from-favorites-button"
+                        onClick={() => {
+                          setFavorites(
+                            favorites.filter(
+                              (favItem) => favItem.id !== stopObject.id
+                            )
+                          );
+                        }}
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </li>
+                </div>
+              ))
+            ) : (
+              <p>No stops matching your search</p>
+            )}
+          </ul>
+        }
       </div>
     </div>
   );

@@ -1,0 +1,82 @@
+/* Styling for whole page (title and content) */
+.error-page {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  flex: 1;
+}
+
+
+.error-title {
+  color: rgb(46, 45, 45);
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.error-description {
+  padding: 20px 0px;
+}
+
+.return-home-button {
+  margin: 24px 0px;
+  height: 50px;
+  width: 180px;
+  border-radius: 5px;
+  background-color: #8f9397;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.return-home-button:hover {
+  background-color: #777e5c;
+}
+.return-home-button a {
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media screen and (max-width: 800px) {
+  .error-page {
+    margin-top: 160px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .navbaritems {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar {
+    top: 130px;
+    height: 250px;
+  }
+
+  .sitetitlebox {
+    height: 130px;
+  }
+
+  .error-page {
+    margin-top: 380px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .sitetitle {
+    font-size: 35px;
+  }
+  .error-title {
+    font-size: 30px;
+  }
+}

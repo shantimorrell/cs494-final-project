@@ -30,15 +30,15 @@ export default function RouteLayout({ children }) {
           <aside className="route-side-bar">
             <ul>
               {Object.keys(routes).map((id) => (
-                <li
-                  className="route-side-bar-item"
-                  key={id}
-                  style={{ backgroundColor: `#${routes[id].color}` }}
-                >
+                
                   <Link href={`/viewRoute/${routes[id].routeNo}`}>
-                    Route {routes[id].routeNo}
+                  <li
+                    className="route-side-bar-item"
+                    key={id}
+                    style={{ backgroundColor: `#${routes[id].color}` }}
+                  >Route {routes[id].routeNo}</li>
                   </Link>
-                </li>
+                
               ))}
             </ul>
           </aside>

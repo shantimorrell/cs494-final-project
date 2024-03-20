@@ -31,19 +31,19 @@
 }
 
 .route-side-bar-item {
-  width: 90%;
+  width: 200px;
   min-height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-}
-
-.route-side-bar-item a {
-  text-decoration: none;
   color: white;
   font-size: 18px;
+}
+
+a {
+  text-decoration: none;
 }
 
 /*styling for specific route information (on right side of sidebar*/

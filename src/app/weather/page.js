@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./weather.css";
 import { Spinner } from "../components/spinner";
+const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY
 export default function Weather() {
   const [weather, setWeather] = useState("");
   const [loading, setLoading] = useState(false)
@@ -16,7 +17,7 @@ export default function Weather() {
     async function fetchWeather() {
       setLoading(true)
       const weather_response = await fetch(
-        "https://api.openweathermap.org/data/2.5/forecast?lat=44.5645659&lon=-123.2620435&appid=4cbd262696137f2d879fbd6b01b274ea"
+        `https://api.openweathermap.org/data/2.5/forecast?lat=44.5645659&lon=-123.2620435&appid=${API_KEY}`
       );
       const weather_json = await weather_response.json();
       setWeather(weather_json);
